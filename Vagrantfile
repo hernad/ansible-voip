@@ -23,10 +23,13 @@ Vagrant.configure(2) do |config|
   end
 
 
-  config.vm.provision "shell", path: "epel_install.sh"
+  config.vm.provision "shell", path: "bootstrap.sh"
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
   end
 
 end
+
+
+
