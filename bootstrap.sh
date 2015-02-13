@@ -43,7 +43,10 @@ fi
 }
 
 epel_install
-yum_install ansible
+yum_install bind-utils
+# ne trebamo ansible na ciljnom hostu
+# yum_install ansible
+
 yum_install dkms
 format_sdb
 

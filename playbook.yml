@@ -15,5 +15,8 @@
     - name: Checks if resolver is working properly with new nameserver
       command: host -t A ansible.cc
 
-    - name: Final greeting
-      pause: prompt="Don't worry about all the red above; if you made it here, your Vagrant VMs are probably fine ! Please press [Enter]"
+    #- name: Final greeting
+    #  pause: prompt="Pritisnite enter"
+
+    - debug: msg="System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
+
