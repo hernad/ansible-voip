@@ -1,0 +1,11 @@
+lspci -v
+
+03:02.0 ISDN controller: Cologne Chip Designs GmbH ISDN network Controller [HFC-4S] (rev 01)
+	Subsystem: Cologne Chip Designs GmbH HFC-4S [Junghanns DuoDBRI]
+	Flags: medium devsel, IRQ 19
+	I/O ports at e000 [size=8]
+	Memory at f7c00000 (32-bit, non-prefetchable) [size=4K]
+	Capabilities: [40] Power Management version 2
+	Kernel driver in use: wcb4xxp
+	Kernel modules: wcb4xxp, hfcmulti
+

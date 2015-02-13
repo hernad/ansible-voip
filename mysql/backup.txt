@@ -1,0 +1,2 @@
+[root@localhost asterisk]# mysqldump asteriskcdrdb > asteriskcdrdb.sql
+[root@localhost asterisk]# mysqldump asterisk > asterisk.sql
