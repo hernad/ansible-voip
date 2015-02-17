@@ -15,11 +15,12 @@ sata_controller = 'SATA Controller'
 Vagrant.configure(2) do |config|
   
 
-  config.vm.box = "chef/centos-7.0"
+  #config.vm.box = "chef/centos-7.0"
 
 
   config.vm.define "foreman" do |foreman|
 
+     foreman.vm.box = "packer-foreman"
      foreman.vm.provider "virtualbox" do |vb|
          vb.gui = true
          vb.memory = "1536"

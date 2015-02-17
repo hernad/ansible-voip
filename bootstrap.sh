@@ -1,8 +1,9 @@
 #!/bin/bash
 
-HOLD_KERNEL="CentOS Linux, with Linux 3.10.0-123.el7.x86_64"
+#HOLD_KERNEL="CentOS Linux, with Linux 3.10.0-123.el7.x86_64"
+HOLD_KERNEL=
 
-epel_install() {
+epel7_install() {
 
   wget -q -O epel-release-7.rpm http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
   sudo rpm -Uvh epel-release-7.rpm
@@ -57,14 +58,14 @@ fi
 set_locale() {
   localectl set-locale LANG=bs_BA.utf8 # to set the Language
   #localectl list-locales
-  localectl list-keymaps # list keyboard mappings
+  #localectl list-keymaps
   localectl set-keymap croat
   localectl status
 }
 
 set_locale
 yum_update
-epel_install
+#epel7_install
 yum_install bind-utils
 yum_install dkms
 

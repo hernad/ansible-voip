@@ -1,0 +1,9 @@
+
+Debug: Executing '/bin/systemctl is-enabled forema: 372/373, 99%, 0.0/s, elapsed: 00:08:48
+ Could not set 'present' on ensure: 422 Unprocessable Entity at 12:/usr/share/foreman-installer/modules/foreman_proxy/manifests/register.pp
+Error: Could not set 'present' on ensure: 422 Unpr: 372/373, 99%, 0.0/s, elapsed: 00:09:27
+ Could not set 'present' on ensure: 422 Unprocessable Entity at 12:/usr/share/foreman-installer/modules/foreman_proxy/manifests/register.pp
+ /Stage[main]/Foreman_proxy::Register/Foreman_smartproxy[foreman.localdomain]/ensure: change from absent to present failed: Could not set 'present' on ensure: 422 Unprocessable Entity at 12:/usr/share/foreman-installer/modules/foreman_proxy/manifests/register.pp
+ /Stage[main]/Foreman_proxy::Register/Foreman_smartproxy[foreman.localdomain]: Failed to call refresh: missing param 'id' in parameters
+ /Stage[main]/Foreman_proxy::Register/Foreman_smartproxy[foreman.localdomain]: missing param 'id' in parameters
+
