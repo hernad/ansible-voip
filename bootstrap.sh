@@ -1,5 +1,7 @@
 #!/bin/bash
 
+HOLD_KERNEL="CentOS Linux, with Linux 3.10.0-123.el7.x86_64"
+
 epel_install() {
 
   wget -q -O epel-release-7.rpm http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
@@ -7,11 +9,21 @@ epel_install() {
 
 }
 
+
 yum_install() {
 
   sudo yum -y install $1
 }
 
+yum_update() {
+
+  sudo yum -y update
+  if [ "$HOLD_KERNEL" ]; then
+    echo grub2-set-default "$HOLD_KERNEL"
+    grub2-set-default "$HOLD_KERNEL"
+  fi
+  grub2-editenv list
+}
 
 format_sdb() {
 
@@ -42,12 +54,23 @@ fi
 
 }
 
+set_locale() {
+  localectl set-locale LANG=bs_BA.utf8 # to set the Language
+  #localectl list-locales
+  localectl list-keymaps # list keyboard mappings
+  localectl set-keymap croat
+  localectl status
+}
+
+set_locale
+yum_update
 epel_install
 yum_install bind-utils
+yum_install dkms
+
 # ne trebamo ansible na ciljnom hostu
 # yum_install ansible
 
-yum_install dkms
 format_sdb
 
 
