@@ -4,8 +4,7 @@
   
   tasks:
 
-    - hostname: name=foreman.bring.out.ba
-
+    - hostname: name=foreman.localdomain
 
     #- name: Checks if resolver is working properly (issues with some VBox/Host OS combinations)
     #  command: host -t A ansible.cc
@@ -36,4 +35,5 @@
     - name: foreman installer
       yum: name=foreman-installer
 
-
+    - name: run foreman installer
+      command: foreman-installer --foreman-admin-username=admin --foreman-admin-password=changeme --puppet-srv-domain=localdomain --foreman-proxy-dns-zone=localdomain --foreman-servername=foreman.localdomain --foreman-proxy-registered-name=foreman.localdomain

@@ -23,6 +23,7 @@ Vagrant.configure(2) do |config|
      foreman.vm.provider "virtualbox" do |vb|
          vb.gui = true
          vb.memory = "1536"
+         vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
          unless File.exist?(file_to_disk)
             vb.customize ['createhd', '--filename', file_to_disk, '--size', 500 * 1024]
@@ -34,12 +35,18 @@ Vagrant.configure(2) do |config|
         end
      end
 
-     foreman.vm.provision "shell", path: "bootstrap.sh"
      foreman.vm.provision "ansible" do |ansible|
         ansible.playbook = "playbook-foreman.yml"
      end
+     foreman.vm.provision "puppet" do |puppet|
+        puppet.manifest_file = "foreman.pp"
+        puppet.module_path = "modules"
+     end
 
-     foreman.vm.network :private_network, :ip => "172.16.255.4"
+     foreman.vm.provision "shell", path: "bootstrap.sh"
+
+     foreman.vm.network :private_network, :ip => "192.168.33.51"
+
   end
 end
 
