@@ -11,5 +11,5 @@
   - role: ansible-role-dns
     dns_domain: bring.out.test
     dns_nameservers: ['192.168.33.50', '192.168.33.60']
-    dns_searchs: "bring.out.test localdomain"
+    dns_searchs: 'bring.out.test localdomain'
 

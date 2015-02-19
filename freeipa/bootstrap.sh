@@ -47,10 +47,10 @@ fi
 
 if [ "$1" == "replica" ] ; then
   ifconfig enp0s8 192.168.33.60
-  cp /vagrant/id_rsa* /home/vagrant/.ssh/
-  chown root /tmp/id_rsa
-  chmod 0600 /tmp/id_rsa
+  #cp /vagrant/id_rsa* /home/vagrant/.ssh/
+  #chown root /tmp/id_rsa
+  #chmod 0600 /tmp/id_rsa
   #scp $SSH_OPTS vagrant@192.168.33.50:/var/lib/ipa/replica-info-${IPA_SERVER_R}.gpg /tmp/
-  echo $PASSWORD | ipa-replica-install /vagrant/replica-info-${IPA_SERVER_R}.gpg 
+  echo $PASSWORD | ipa-replica-install /vagrant/replica-info-${IPA_SERVER_R}.gpg --skip-conncheck 
 fi
 
