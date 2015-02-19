@@ -1,0 +1,13 @@
+[ipa:vars]
+some_server=foo.southeast.example.com
+halon_system_timeout=30
+self_destruct_countdown=60
+escape_pods=2
+
+ansible_ssh_user=vagrant
+ansible_ssh_host=127.0.0.1
+ansible_sudo=true
+
+[ipa]
+ipa.bring.out.test  ansible_ssh_host=192.168.33.50 ansible_ssh_private_key_file='/Users/hernad/voip/.vagrant/machines/freeipa/virtualbox/private_key'
+ipa-2.bring.out.test ansible_ssh_host=192.168.33.60 ansible_ssh_private_key_file='/Users/hernad/voip/.vagrant/machines/replica/virtualbox/private_key' 

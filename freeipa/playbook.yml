@@ -6,6 +6,7 @@
     yum: name=http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
   - name: install puppet
     yum: name=puppet
+  - lineinfile: dest=/etc/hosts regexp='^127\.0\.0\.1' line='127.0.0.1 localhost localhost.localdomain ipa-2.bring.out.test' owner=root group=root mode=0644
 
   roles: 
   - role: ansible-role-dns
