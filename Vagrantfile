@@ -17,13 +17,32 @@ Vagrant.configure(2) do |config|
   config.vm.define "freeipa" do |freeipa|
 
      freeipa.vm.provider "virtualbox" do |vb|
-        vb.memory = "2048"
+        vb.memory = "1536"
      end
      freeipa.vm.box = "chef/centos-7.0"
      freeipa.vm.network :private_network, :ip => "192.168.33.50"
 
-     freeipa.vm.provision "shell", path: "freeipa/bootstrap.sh"
+     freeipa.vm.provision "shell", path: "freeipa/bootstrap.sh", args: "server"
   end
+
+  config.vm.define "replica" do |freeipa|
+
+     freeipa.vm.provider "virtualbox" do |vb|
+        vb.memory = "1024"
+     end
+     freeipa.vm.box = "chef/centos-7.0"
+     freeipa.vm.network :private_network, :ip => "192.168.33.60"
+
+     freeipa.vm.provision "ansible" do |ansible|
+        ansible.playbook = "freeipa/playbook.yml"
+     end
+     freeipa.vm.provision "puppet" do |puppet|
+        puppet.manifest_file = "replica.pp"
+        puppet.module_path = "modules"
+     end
+     freeipa.vm.provision "shell", path: "freeipa/bootstrap.sh", args: "replica"
+  end
+
 
   config.vm.define "foreman" do |foreman|
 

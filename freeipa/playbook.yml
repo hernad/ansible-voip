@@ -1,0 +1,15 @@
+- hosts: all
+  sudo: yes
+  remote_user: vagrant
+  tasks:
+  - name: puppet repos
+    yum: name=http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+  - name: install puppet
+    yum: name=puppet
+
+  roles: 
+  - role: ansible-role-dns
+    dns_domain: bring.out.test
+    dns_nameservers: ['192.168.33.50', '192.168.33.60']
+    dns_searchs: "bring.out.test localdomain"
+
