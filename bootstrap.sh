@@ -22,8 +22,8 @@ yum_update() {
   if [ "$HOLD_KERNEL" ]; then
     echo grub2-set-default "$HOLD_KERNEL"
     grub2-set-default "$HOLD_KERNEL"
+    grub2-editenv list
   fi
-  grub2-editenv list
 }
 
 format_sdb() {
@@ -63,7 +63,7 @@ set_locale() {
   localectl status
 }
 
-set_locale
+#set_locale
 yum_update
 #epel7_install
 yum_install bind-utils
@@ -72,6 +72,7 @@ yum_install dkms
 # ne trebamo ansible na ciljnom hostu
 # yum_install ansible
 
+yum_install parted
 format_sdb
 
 

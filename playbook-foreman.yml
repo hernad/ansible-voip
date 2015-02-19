@@ -26,14 +26,20 @@
     - name: install epel release
       yum: name=epel-release
 
-    - name: foreman repos install
-      yum: name=http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm state=present
+    #- name: foreman repos centos7 install
+    #  yum: name=http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm state=present
  
-    - name: foreman 1.7 repos release install
-      yum: name=http://yum.theforeman.org/releases/1.7/el7/x86_64/foreman-release.rpm state=present
+    - name: foreman repos centos6 install
+      yum: name=http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm state=present
+ 
+    #- name: foreman 1.7 repos release centos7 install
+    #  yum: name=http://yum.theforeman.org/releases/1.7/el7/x86_64/foreman-release.rpm state=present
+
+    - name: foreman 1.7 repos release centos6 install
+      yum: name=http://yum.theforeman.org/releases/1.7/el6/x86_64/foreman-release.rpm state=present
 
     - name: foreman installer
       yum: name=foreman-installer
 
     - name: run foreman installer
-      command: foreman-installer --foreman-admin-username=admin --foreman-admin-password=changeme --puppet-srv-domain=localdomain --foreman-proxy-dns-zone=localdomain --foreman-servername=foreman.localdomain --foreman-proxy-registered-name=foreman.localdomain
+      command: foreman-installer --foreman-admin-username=admin --foreman-admin-password=changeme --puppet-srv-domain=localdomain --foreman-proxy-dns-zone=localdomain --foreman-servername=foreman.localdomain --foreman-proxy-registered-name=foreman.localdomain  --foreman-proxy-trusted-hosts=foreman.localdomain
